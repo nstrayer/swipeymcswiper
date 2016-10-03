@@ -37,9 +37,15 @@ $(document).on("change", ".chooser select", function() {
 //     alert("you liked this thing")
 // });
 
-$(document).on("swipe", ".chooser .left-arrow", function() {
-    alert("you clicked the left arrow")
-});
+$(document).swipe( {
+    //Generic swipe handler for all directions
+    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+      alert("You swiped " + direction );
+    }
+  });
+// $(document).on("swipe", ".chooser .left-arrow", function() {
+//     alert("you clicked the left arrow")
+// });
 
 // $(document).on("dblclick", ".chooser select.left", function() {
 //     move($(this).parents(".chooser"), ".left", ".right");
