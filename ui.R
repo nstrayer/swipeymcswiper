@@ -1,8 +1,18 @@
-source("chooser.R")
+# source("chooser.R")
+swiperButton <- function(inputId, value = 0) {
+  tagList(
+      singleton(tags$head(
+        tags$script(src="touchSwipe.js"),
+        tags$script(src="shinySwiper.js")
+      )),
+    tags$button(id = inputId,
+                class = "swiper btn-default",
+                type = "button",
+                as.character(value))
+  )
+}
 
 fluidPage(
-  chooserInput("mychooser", "Available frobs", "Selected frobs",
-    row.names(USArrests), c(), size = 10, multiple = TRUE
-  ),
+  swiperButton("myswiper"),
   verbatimTextOutput("selection")
 )
